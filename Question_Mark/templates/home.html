@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block head %}
-<title>Home</title>
 <link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
 {% endblock head %}
 {% block content %}
@@ -18,6 +17,7 @@
             voluptate repudiandae! Totam, voluptatibus aut.</p>
     </div>
 
+
     <div class="right-container">
         <div class="form-box">
             <div class="button-box">
@@ -29,21 +29,24 @@
                     Register
                 </button>
             </div>
-            <form id="login" class="input-group">
-                <input type="text" class="input-feild email" placeholder="Email Id" required>
-                <input type="text" class="input-feild pass" placeholder="Enter Password" required>
-                <input type="checkbox" class="check-box"><span>Remember Password</span>
-                <button type="submit" class="submit-btn">Log In</button>
+            <form method="POST" action="" id="login" class="input-group">
+                <input type="text" name="l_email" class="input-feild email" placeholder="Email Id" required>
+                <input type="password" name="l_pass" class="input-feild pass" placeholder="Enter Password" required>
+                <input type="checkbox" name="checkbox" value="True" class="check-box"><span>Remember Password</span>
+                <button type="submit" value="login" class="submit-btn">Log In</button>
+                <!-- <small class="text-muted ml-2">
+                    <a class="e" href="#">Forgot Password?</a>
+                </small> -->
             </form>
-
-            <form id="register" class="input-group">
-                <input type="text" class="input-feild" placeholder="First Name" required>
-                <input type="text" class="input-feild inp" placeholder="Last Name" required>
-                <input type="email" class="input-feild inp" placeholder="Email Id" required>
-                <input type="text" class="input-feild inp" placeholder="Enter Password" required>
-                <input type="text" class="input-feild inp" placeholder="Confirm Password" required>
-                <input type="checkbox" class="check-box rCheckBox"><span class="r">Agree to Terms and Conditions</span>
-                <button type="submit" class="submit-btn registerBtn">Register</button>
+            <form method="POST" action="" id="register" class="input-group">
+                <input type="text" name="f_name" class="input-feild" placeholder="First Name" required>
+                <input type="text" name="l_name" class="input-feild inp" placeholder="Last Name" required>
+                <input type="email" name="r_email" class="input-feild inp" placeholder="Email Id" required>
+                <input type="password" name="r_pass" class="input-feild inp" placeholder="Enter Password" required>
+                <input type="password" name="c_pass" class="input-feild inp" placeholder="Confirm Password" required>
+                <input type="checkbox" name="tc" value="True" class="check-box rCheckBox"><span class="r">Agree to Terms
+                    and Conditions</span>
+                <button type="submit" value="register" class="submit-btn registerBtn">Register</button>
             </form>
         </div>
     </div>
