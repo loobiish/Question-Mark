@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% block head %}{% endblock head %}
     <style>
         .navbar-dark .navbar-nav .nav-item .nav-link:focus,
         .navbar-dark .navbar-nav .nav-item .nav-link:hover {
@@ -32,6 +33,11 @@
             height: 50px;
         }
     </style>
+    {% if title %}
+    <title>Flask Blog - {{ title }}</title>
+    {% else %}
+    <title>Flask Blog</title>
+    {% endif %}
 </head>
 
 
@@ -39,16 +45,18 @@
     <!-- Navigation Bar -->
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
-        <a class="nav-link" href={{ url_for("explore") }} title="Take a tour of our website!">
-            <img id="brand-image" alt="Website Logo" src='C:\Users\hp\PYTHON\Question_Mark\Question_Mark\static\logo.png' /></div></a>
-            <div class="collapse navbar-collapse flex-grow-0 ml-0 mr-5 mb-auto mt-0" id="navbarSupportedContent">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item active">  
-                        <a class="nav-link" href={{ url_for("explore") }} title="Take a tour of our website!"><h1>Question Mark</h1></a>  
-                    </li>
-                </ul>
-        
-            </div>
+        <a class="nav-link" href={{ url_for("home") }} title="Take a tour of our website!">
+            <img id="brand-image" alt="Website Logo" src={{ url_for('static', filename='logo.png') }}></div></a>
+        <div class="collapse navbar-collapse flex-grow-0 ml-0 mr-5 mb-auto mt-0" id="navbarSupportedContent">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item active">
+                    <a class="nav-link" href={{ url_for("home") }} title="Take a tour of our website!">
+                        <h1>Question Mark</h1>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
         </a>
 
         <!-- <button> -->
@@ -58,21 +66,29 @@
                 <!-- <li class="nav-item active">  
                     <a class="nav-link" href={{ url_for("explore") }} title="Take a tour of our website!"><h1>Question Mark</h1></a>  
                 </li> -->
-                <li class="nav-item active">  
-                    <a class="nav-link" href={{ url_for("explore") }} title="Take a tour of our website!"><h5>Explore</h5></a>
-                </li>
-                <li class="nav-item active">  
-                    <a class="nav-link" href={{ url_for("faq") }} title="Got queries? Just ask them here!"><h5>FAQ</h5></a>    
+                <li class="nav-item active">
+                    <a class="nav-link" href={{ url_for("explore") }} title="Take a tour of our website!">
+                        <h5>Explore</h5>
+                    </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href={{ url_for("about") }} title="Know more about us!"><h5>About Us</h5></a>
+                    <a class="nav-link" href={{ url_for("faq") }} title="Got queries? Just ask them here!">
+                        <h5>FAQ</h5>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href={{ url_for("about") }} title="Know more about us!">
+                        <h5>About Us</h5>
+                    </a>
                 </li>
             </ul>
         </div>
 
         <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" title="Type your question here!">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" title="Search your question!">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                title="Type your question here!">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+                title="Search your question!">Search</button>
         </form>
     </nav>
 
