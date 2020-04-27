@@ -1,7 +1,7 @@
 from Question_Mark import app, db, bcrypt
 from flask import render_template, redirect, url_for, flash, request, session
 from Question_Mark.models import User, Questions
-from flask_login import current_user, logout_user
+from flask_login import current_user, logout_user, login_user
 
 @app.route("/register", methods=['GET','POST'])
 def RegistrationForm():
@@ -31,12 +31,11 @@ def LoginForm():
         _user = User.query.filter_by(email=_email).first()
         if _user and bcrypt.check_password_hash(_user.password, _password):
             login_user(_user, remember=_remember)
+            flash('Login Successful', 'success')
             return render_template('profile.html', title='Profile')
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
-        return render_template('home.html', title='Home')
-    else:
-        return render_template('home.html', title='Home')
+    return render_template('home.html', title='Home')
     
     
 
@@ -44,7 +43,7 @@ def LoginForm():
 @app.route("/", methods=['GET','POST'])
 @app.route("/home", methods=['GET','POST'])
 def home():
-    
+    RegistrationForm()
     return render_template('home.html', title='Home')
             
         
