@@ -1,4 +1,58 @@
 {% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
+{% endblock head %}
 {% block content %}
-<h1>This is homepage for our Website.</h1>
+<!-- header of page -->
+<header>
+
+</header>
+
+<!-- main area of page -->
+<div class="container">
+    <div class="left-container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur assumenda reiciendis
+            laboriosam
+            at suscipit, dignissimos accusamus cupiditate facilis repellat doloribus tempore harum totam illo,
+            voluptate repudiandae! Totam, voluptatibus aut.</p>
+    </div>
+
+
+    <div class="right-container">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">
+                    Log In
+                </button>
+                <button type="button" class="toggle-btn " onclick="register()">
+                    Register
+                </button>
+            </div>
+            <form method="POST" action="" id="login" class="input-group">
+                <input type="text" class="input-feild email" placeholder="Email Id" required>
+                <input type="text" class="input-feild pass" placeholder="Enter Password" required>
+                <input type="checkbox" class="check-box"><span>Remember Password</span>
+                <button type="submit" class="submit-btn">Log In</button>
+            </form>
+
+            <form method="POST" action="" id="register" class="input-group">
+                <input type="text" class="input-feild" placeholder="First Name" required>
+                <input type="text" class="input-feild inp" placeholder="Last Name" required>
+                <input type="email" class="input-feild inp" placeholder="Email Id" required>
+                <input type="text" class="input-feild inp" placeholder="Enter Password" required>
+                <input type="text" class="input-feild inp" placeholder="Confirm Password" required>
+                <input type="checkbox" class="check-box rCheckBox"><span class="r">Agree to Terms and Conditions</span>
+                <button type="submit" class="submit-btn registerBtn">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- footer of page  -->
+<footer>
+
+</footer>
+
+<script src={{ url_for('static', filename='script.js') }}></script>
 {% endblock content %}
