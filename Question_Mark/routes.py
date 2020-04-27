@@ -44,7 +44,7 @@ def LoginForm():
 @app.route("/", methods=['GET','POST'])
 @app.route("/home", methods=['GET','POST'])
 def home():
-    is
+    
     return render_template('home.html', title='Home')
             
         
