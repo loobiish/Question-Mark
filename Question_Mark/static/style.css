@@ -133,6 +133,35 @@ span {
     left: 450px;
     top: 120px;
     height: 70%;
+<<<<<<< HEAD:Question_Mark/static/style.css
+}
+
+.registerBtn{
+  bottom: 0;
+}
+.inp{
+  position: absolute;
+}
+.inp:nth-child(2){
+  top: 50px;
+}
+.inp:nth-child(3){
+  top: 100px;
+}
+.inp:nth-child(4){
+  top: 150px;
+}
+.inp:nth-child(5){
+  top: 200px;
+}
+
+.rCheckBox{
+top: 225px;
+}
+.r{
+  top: 252px;
+=======
+>>>>>>> 0761b94f3aaaea0e8bd612a8be4bc291b952ffc3:Question_Mark/templates/style.css
 }
 
 .registerBtn{
@@ -160,4 +189,3 @@ top: 225px;
 .r{
   top: 252px;
 }
-
