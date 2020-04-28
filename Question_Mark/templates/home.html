@@ -11,10 +11,10 @@
 <!-- main area of page -->
 <div class="container">
     <div class="left-container">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur assumenda reiciendis
-            laboriosam
-            at suscipit, dignissimos accusamus cupiditate facilis repellat doloribus tempore harum totam illo,
-            voluptate repudiandae! Totam, voluptatibus aut.</p>
+        <p><b><h3>Question Mark a place where you can ask questions, share your stories and experiences anonymously! 
+            You can also answer and give your opinions anonymously. 
+            Experience this magic by creating a free account. 
+            Feel free to share your thoughts. Cheers!</h3></b></p>
     </div>
 
 
@@ -22,18 +22,20 @@
         <div class="form-box">
             <div class="button-box">
                 <div id="btn"></div>
-                <button type="button" class="toggle-btn" onclick="login()">
+                <button type="button" class="toggle-btn btn shadow-none" onclick="login()" title="Alredy a user? Just Log In.">
                     Log In
                 </button>
-                <button type="button" class="toggle-btn " onclick="register()">
+                <button type="button" class="toggle-btn btn shadow-none" onclick="register()" title="New user? Get registered here.">
                     Register
+                    
                 </button>
             </div>
+
             <form method="POST" action="" id="login" class="input-group">
                 <input type="text" name="l_email" class="input-feild email" placeholder="Email Id" required>
                 <input type="password" name="l_pass" class="input-feild pass" placeholder="Enter Password" required>
                 <input type="checkbox" name="checkbox" value="True" class="check-box"><span>Remember Password</span>
-                <button type="submit" value="login" class="submit-btn">Log In</button>
+                <button type="submit" value="login" class="submit-btn" title="Log into your account.">Log In</button>
                 <!-- <small class="text-muted ml-2">
                     <a class="e" href="#">Forgot Password?</a>
                 </small> -->
@@ -44,10 +46,9 @@
                 <input type="email" name="r_email" class="input-feild inp" placeholder="Email Id" required>
                 <input type="password" name="r_pass" class="input-feild inp" placeholder="Enter Password" required>
                 <input type="password" name="c_pass" class="input-feild inp" placeholder="Confirm Password" required>
-                <input type="checkbox" name="tc" value="True" class="check-box rCheckBox"><span class="r">Agree to
-                    Terms
-                    and Conditions</span>
-                <button type="submit" value="register" class="submit-btn registerBtn">Register</button>
+                <input type="checkbox" name="tc" value="True" class="check-box rCheckBox"><span class="r">
+                    Agree to Terms and Conditions</span>
+                <button type="submit" value="register" class="submit-btn registerBtn" title="Register your account.">Register</button>
             </form>
         </div>
     </div>
