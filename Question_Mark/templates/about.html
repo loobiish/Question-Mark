@@ -1,4 +1,64 @@
 {% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" href={{ url_for('static', filename='style_about.css') }}>
+{% endblock head %}
 {% block content %}
-<h1>About Us</h1>
-{% endblock content %}
+
+
+      <div class="container white-container">
+        <div class="padding">
+            <div class="container">
+                <div class="text-center">
+                    <h1>
+                    <a href="#" class="button button-grad">About Us</a>
+                </h1>
+                </div>
+
+                <div class="row">
+                    <div class="text-center">
+                        <h4>We're a socially awkward trio who decided to create a social media for people like us. 
+                            The idea before our website is to provide a place where everyone can ask or share anything
+                             without hesitation and feel free to help others anonymously.</h4>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+         
+
+           <div class="padding">
+            <div class="container">
+                <div class="text-center ">
+                    <span>
+                        <h1>
+                            <a href="#" class="button button-grad">Our Team</a>
+                        </h1>
+                </span>
+                </div> 
+                <div class="row">
+                    <div class="col-sm-12 team">
+                       <div class="team-member">
+                            <h3>Nitin</h3>
+                            <p><h5>A crazy Gemini who is a Python and Flask expert. Outside work he can be found stalking people. A hard working friend.</h5></p>
+                            
+                       </div>
+                       <div class="team-member ">
+                            <h3>Lavish</h3>
+                            <p><h5>A creative dumbo who knows a bit of everyone's work and helps the other two. He somehow ended up writing all this.</h5></p>
+                            
+                        </div>
+                        <div class="team-member ">
+                            <h3>Sudeep</h3>
+                            <p><h5>A specsy with Chunibyo delusion who is an expert front-end developer and an otaku. Loves reading and spoiling manga.</h5></p>
+                        </div>
+                   </div>
+                </div>
+            </div>    
+           </div>
+        </div>
+
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src={{ url_for('static', filename='script.js') }}></script>
+    {% endblock content %}

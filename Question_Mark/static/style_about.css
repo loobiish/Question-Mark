@@ -1,0 +1,80 @@
+* {
+            box-sizing: border-box;
+        }
+
+
+        #grad {
+            height: 98%;
+            background-color: white;
+            background-image: linear-gradient(to bottom right, #3bb2b8, #42e695);
+        }
+
+        .pcolor {
+            background-color: snow;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.7);
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        /* .block {
+            text-align: center;
+            color:lightcyan;
+        } */
+        .team {
+            width: auto;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            
+        }
+        .team-member {
+            
+            text-align: center;
+            margin: 1rem;
+            background-color: snow;
+            box-shadow: 0 0 7px rgba(0,0,0,0.8);
+            border-radius: 5px;
+        }
+        .block {
+            padding: 5px;
+            justify-content: center;
+            
+        }
+        .white-container {
+            background-color: snow;
+        }
+        .grad-element {
+            background-image: linear-gradient(to bottom right, #3bb2b8, #42e695);
+            color:aliceblue;
+        }
+        .button:link,
+        .button:visited {
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 15px 40px;
+            display: inline-block;
+            border-radius: 100px;
+            transition: all .2s; 
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+           
+            color: snow;
+        }
+        .button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+            color: snow;
+            
+        }
+        .button-grad {
+            background-image: linear-gradient(to bottom right, #3bb2b8, #42e695);
+            color: snow;
+            padding: 20px;
+        }
+
+        

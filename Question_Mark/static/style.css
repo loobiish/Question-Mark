@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    
 }
 
 body {
@@ -163,28 +163,3 @@ top: 225px;
   top: 252px;
 }
 
-.registerBtn{
-  bottom: 0;
-}
-.inp{
-  position: absolute;
-}
-.inp:nth-child(2){
-  top: 50px;
-}
-.inp:nth-child(3){
-  top: 100px;
-}
-.inp:nth-child(4){
-  top: 150px;
-}
-.inp:nth-child(5){
-  top: 200px;
-}
-
-.rCheckBox{
-top: 225px;
-}
-.r{
-  top: 252px;
-}
