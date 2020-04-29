@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
     
 }
 
@@ -123,8 +124,15 @@ body {
     font-size: 14px;
     top: 127px;
     left: 30px;
-    position: absolute;
+    position: relative;
 
+}
+.r {
+    color: #777;
+    font-size: 14px;
+    top: 225px;
+    left: 30px;
+    position: absolute;
 }
 
 #login{
@@ -159,7 +167,5 @@ body {
 .rCheckBox{
 top: 225px;
 }
-.r{
-  top: 252px;
-}
+
 
