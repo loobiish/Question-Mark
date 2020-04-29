@@ -13,11 +13,15 @@ def RegistrationForm():
         confirm_password_ = request.form.get("c_pass")
         conditions = request.form.getlist('tc')
         hashed_password = bcrypt.generate_password_hash(password_).decode('utf-8')
-        user = User(first_name=first_name_, last_name=last_name_, email=email_, password=hashed_password)
-        db.session.add(user)
-        db.session.commit()
-        flash('Your account has been created! You will now be able to log in!', 'success')
-        return render_template('home.html', title='Home')
+        if password_ == confirm_password_:
+            user = User(first_name=first_name_, last_name=last_name_, email=email_, password=hashed_password)
+            db.session.add(user)
+            db.session.commit()
+            flash('Your account has been created! You will now be able to log in!', 'success')
+            return render_template('home.html', title='Home')
+        else:
+            flash('Account not created as password was not confirmed', 'info')
+            return render_template('home.html', title='Home')
     else:
         return render_template('home.html', title='Home')
     
@@ -32,22 +36,21 @@ def LoginForm():
         if _user and bcrypt.check_password_hash(_user.password, _password):
             login_user(_user, remember=_remember)
             flash('Login Successful', 'success')
-            return render_template('profile.html', title='Profile')
+            return redirect(url_for('profile'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
-    return render_template('home.html', title='Home')
-    
-    
+            return render_template('home.html', title='Home')
+    else:
+        return render_template('home.html', title='Home')
+        
 
 
 @app.route("/", methods=['GET','POST'])
 @app.route("/home", methods=['GET','POST'])
 def home():
-    RegistrationForm()
-    return render_template('home.html', title='Home')
-            
-        
+    return RegistrationForm() + LoginForm()
 
+    
 @app.route("/logout")
 def logout():
     logout_user()
@@ -69,7 +72,9 @@ def faq():
     return render_template('faq.html', title='FAQ')
 
 
-
+@app.route("/profile")
+def profile():
+    return render_template('profile.html', title='Profile')
 
 
 

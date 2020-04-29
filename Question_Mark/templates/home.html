@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block head %}
 <link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
+<title>Home</title>
 {% endblock head %}
 {% block content %}
 <!-- header of page -->
@@ -11,10 +12,12 @@
 <!-- main area of page -->
 <div class="container">
     <div class="left-container">
-        <p><b><h3>Question Mark a place where you can ask questions, share your stories and experiences anonymously! 
-            You can also answer and give your opinions anonymously. 
-            Experience this magic by creating a free account. 
-            Feel free to share your thoughts. Cheers!</h3></b></p>
+        <p><b>
+                <h3>Question Mark a place where you can ask questions, share your stories and experiences anonymously!
+                    You can also answer and give your opinions anonymously.
+                    Experience this magic by creating a free account.
+                    Feel free to share your thoughts. Cheers!</h3>
+            </b></p>
     </div>
 
 
@@ -22,35 +25,37 @@
         <div class="form-box">
             <div class="button-box">
                 <div id="btn"></div>
-                <button type="button" class="toggle-btn btn shadow-none" onclick="login()" title="Alredy a user? Just Log In.">
+                <button type="button" class="toggle-btn btn shadow-none" onclick="login()"
+                    title="Alredy a user? Just Log In.">
                     Log In
                 </button>
-                <button type="button" class="toggle-btn btn shadow-none" onclick="register()" title="New user? Get registered here.">
+                <button type="button" class="toggle-btn btn shadow-none" onclick="register()"
+                    title="New user? Get registered here.">
                     Register
-                    
+
                 </button>
             </div>
 
-            <form method="POST" action="" id="login" class="input-group">
+            <form method="POST" action="{{ url_for('LoginForm') }}" id="login" class="input-group">
                 <input type="text" name="l_email" class="input-feild email" placeholder="Email Id" required>
                 <input type="password" name="l_pass" class="input-feild pass" placeholder="Enter Password" required>
                 <input type="checkbox" name="checkbox" value="True" class="check-box"><span>Remember Password</span>
                 <pre>
-                       
-                                
+
+
                 </pre>
                 <div class="span"><a href="#" title="Click here to recover password.">Forget password?</a></div>
                 <pre>
 
                 </pre>
                 <button type="submit" value="login" class="submit-btn" title="Log into your account.">Log In</button>
-                
-                
+
+
                 <!-- <small class="text-muted ml-2">
                     <a class="e" href="#">Forgot Password?</a>
                 </small> -->
             </form>
-            <form method="POST" action="" id="register" class="input-group">
+            <form method="POST" action="{{ url_for('RegistrationForm') }}" id="register" class="input-group">
                 <input type="text" name="f_name" class="input-feild" placeholder="First Name" required>
                 <input type="text" name="l_name" class="input-feild inp" placeholder="Last Name" required>
                 <input type="email" name="r_email" class="input-feild inp" placeholder="Email Id" required>
@@ -58,7 +63,8 @@
                 <input type="password" name="c_pass" class="input-feild inp" placeholder="Confirm Password" required>
                 <input type="checkbox" name="tc" value="True" class="check-box rCheckBox"><span class="r">
                     Agree to Terms and Conditions</span>
-                <button type="submit" value="register" class="submit-btn registerBtn" title="Register your account.">Register</button>
+                <button type="submit" value="register" class="submit-btn registerBtn"
+                    title="Register your account.">Register</button>
             </form>
         </div>
     </div>
