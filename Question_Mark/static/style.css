@@ -159,7 +159,13 @@ body {
 .rCheckBox{
 top: 225px;
 }
-.r{
-  top: 252px;
+.r {
+  top: 225px;
+  color: #777;
+  font-size: 14px;
+  position: absolute;
+  margin-left: 23px;
+  margin-top: 26px;
 }
+
 
