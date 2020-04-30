@@ -167,4 +167,11 @@ top: 225px;
   margin-top: 26px;
 }
 
-
+.forget {
+  top: 225px;
+  color: #777;
+  font-size: 14px;
+  position: absolute;
+  margin-left: 50px;
+  margin-top: 26px;
+}

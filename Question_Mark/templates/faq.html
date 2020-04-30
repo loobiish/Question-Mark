@@ -1,4 +1,79 @@
 {% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" href={{ url_for('static', filename='style_faq.css') }}>
+<title>FAQ</title>
+{% endblock head %}
 {% block content %}
-<h1>FAQ</h1>
-{% endblock content %}
+
+      <div class="container white-container">
+       
+         <div class="search-box">
+             <input class="search-txt" type="text" placeholder="Type to search">
+             <a class="search-btn" href="#">
+                Search
+             </a>
+         </div>
+
+
+     <section>
+     <div class="faq-container">
+        <div class="accordian">
+
+            <div class="accordian-item" id="question1">
+                <a class="accordian-link" href="#question1">
+                    How often do you Search?
+                    <i class="ion-md-add">+</i>
+                    <i class="ion-md-remove">-</i>
+                </a>
+                <div class="answer">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempore perferendis quam quidem vitae nisi asperiores laborum eius soluta ratione.</p>
+                    
+                </div>
+            </div>
+
+            <div class="accordian-item" id="question2">
+                <a class="accordian-link" href="#question2">
+                    How often do you Search?
+                    <i class="ion-md-add">+</i>
+                    <i class="ion-md-remove">-</i>
+                </a>
+                <div class="answer">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempore perferendis quam quidem vitae nisi asperiores laborum eius soluta ratione.</p>
+                </div>
+            </div>
+
+            <div class="accordian-item" id="question3">
+                <a class="accordian-link" href="#question3">
+                    How often do you Search?
+                    <i class="ion-md-add">+</i>
+                    <i class="ion-md-remove">-</i>
+                </a>
+                <div class="answer">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempore perferendis quam quidem vitae nisi asperiores laborum eius soluta ratione.</p>
+                </div>
+            </div>
+
+            <div class="accordian-item" id="question4">
+                    <a class="accordian-link" href="#question4">
+                        How often do you Search?
+                        <i class="ion-md-add">+</i>
+                        <i class="ion-md-remove">-</i>
+                    </a>
+                    <div class="answer">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempore perferendis quam quidem vitae nisi asperiores laborum eius soluta ratione.</p>
+                    </div>
+            </div>
+
+
+        </div>     
+      </div>     
+     </section> 
+
+
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src={{ url_for('static', filename='script.js') }}></script>
+    {% endblock content %}
