@@ -1,10 +1,12 @@
 from Question_Mark import app, db, bcrypt
 from flask import render_template, redirect, url_for, flash, request, session
 from Question_Mark.models import User, Questions
-from flask_login import current_user, logout_user, login_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route("/register", methods=['GET','POST'])
 def RegistrationForm():
+    if current_user.is_authenticated:
+        return redirect(url_for('explore'))
     if request.method == 'POST':
         first_name_ = request.form.get("f_name")
         last_name_ = request.form.get("l_name")
@@ -22,12 +24,14 @@ def RegistrationForm():
         else:
             flash('Account not created as password was not confirmed', 'info')
             return render_template('home.html', title='Home')
-    else:
-        return render_template('home.html', title='Home')
+    return redirect(url_for('home'))
+    
     
 
 @app.route("/login", methods=['GET','POST'])
 def LoginForm():
+    if current_user.is_authenticated:
+        return redirect(url_for('explore'))
     if request.method == 'POST':
         _email = request.form.get("l_email")
         _password = request.form.get("l_pass" )
@@ -36,22 +40,23 @@ def LoginForm():
         if _user and bcrypt.check_password_hash(_user.password, _password):
             login_user(_user, remember=_remember)
             flash('Login Successful', 'success')
-            return redirect(url_for('profile'))
+            return redirect(url_for('questions'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
             return render_template('home.html', title='Home')
-    else:
-        return render_template('home.html', title='Home')
+    return redirect(url_for('home'))
+    
         
-
-
 @app.route("/", methods=['GET','POST'])
 @app.route("/home", methods=['GET','POST'])
 def home():
-    return RegistrationForm() + LoginForm()
+    if current_user.is_authenticated:
+        return redirect(url_for('explore'))
+    return render_template('home.html', title='Home')
 
     
 @app.route("/logout")
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('home'))
@@ -72,11 +77,21 @@ def faq():
     return render_template('faq.html', title='FAQ')
 
 
-@app.route("/profile")
+@app.route("/profile", methods=['GET','POST'])
+@login_required
 def profile():
-    return render_template('profile.html', title='Profile')
+        return render_template('profile.html', title='Profile')
 
 
+@app.route("/questions", methods=['GET','POST'])
+@login_required
+def questions():
+        return render_template('questions.html', title='My Questions')
+    
+    
+@app.route("/forgot_password", methods=['GET','POST'])
+def forgot_password():
+        return render_template('forgot_password.html', title='Forgot Password')
 
 
 

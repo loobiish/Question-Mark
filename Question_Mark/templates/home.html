@@ -39,24 +39,38 @@
             <form method="POST" action="{{ url_for('LoginForm') }}" id="login" class="input-group">
                 <input type="text" name="l_email" class="input-feild email" placeholder="Email Id" required>
                 <input type="password" name="l_pass" class="input-feild pass" placeholder="Enter Password" required>
+                <input type="checkbox" name="checkbox" value="True" class="check-box"><span>Remember Password</span>
+                <pre>
+
+
+                </pre>
+                <div class="span"><a href={{ url_for('forgot_password') }}
+                        title="Click here to recover password.">Forget password?</a></div>
+                <pre>
+
+                </pre>
                 <input type="checkbox" name="checkbox" value="True" class="check-box">
                 <span class="span">Remember Password</span>
                 <button type="submit" value="login" class="submit-btn" title="Log into your account.">Log In</button>
-
-
-                <!-- <small class="text-muted ml-2">
-                    <a class="e" href="#">Forgot Password?</a>
-                </small> -->
             </form>
+
+
             <form method="POST" action="{{ url_for('RegistrationForm') }}" id="register" class="input-group">
                 <input type="text" name="f_name" class="input-feild" placeholder="First Name" required>
                 <input type="text" name="l_name" class="input-feild inp" placeholder="Last Name" required>
                 <input type="email" name="r_email" class="input-feild inp" placeholder="Email Id" required>
                 <input type="password" name="r_pass" class="input-feild inp" placeholder="Enter Password" required>
                 <input type="password" name="c_pass" class="input-feild inp" placeholder="Confirm Password" required>
-                <input type="checkbox" name="checkbox" value="True" class="check-box rCheckBox">
-                <span class="r">Agree to Terms and Conditions</span>
-                <button type="submit" value="register" class="submit-btn registerBtn" title="Register your account.">Register</button>
+                <<<<<<< HEAD <input type="checkbox" name="tc" value="True" class="check-box rCheckBox"><span class="r">
+                        Agree to Terms and Conditions</span>
+                    <button type="submit" value="register" class="submit-btn registerBtn"
+                        title="Register your account.">Register</button>
+                    =======
+                    <input type="checkbox" name="checkbox" value="True" class="check-box rCheckBox">
+                    <span class="r">Agree to Terms and Conditions</span>
+                    <button type="submit" value="register" class="submit-btn registerBtn"
+                        title="Register your account.">Register</button>
+                    >>>>>>> 6c6cc8f3b75fd6e86483829a9c995b4a2ca46f42
             </form>
         </div>
     </div>
