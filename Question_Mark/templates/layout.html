@@ -46,7 +46,8 @@
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
         <a class="nav-link" href={{ url_for("home") }} title="Take a tour of our website!">
-            <img id="brand-image" alt="Website Logo" src={{ url_for('static', filename='logo.png') }}></div></a>
+            <img id="brand-image" alt="Website Logo" src={{ url_for('static', filename='logo.png') }}></div>
+        </a>
         <div class="collapse navbar-collapse flex-grow-0 ml-0 mr-5 mb-auto mt-0" id="navbarSupportedContent">
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item active">
@@ -55,17 +56,25 @@
                     </a>
                 </li>
             </ul>
-
         </div>
-        </a>
 
         <!-- <button> -->
 
         <div class="collapse navbar-collapse flex-grow-0 ml-auto mr-2 mt-2" id="navbarSupportedContent">
             <ul class="nav navbar-nav navbar-right">
-                <!-- <li class="nav-item active">  
-                    <a class="nav-link" href={{ url_for("explore") }} title="Take a tour of our website!"><h1>Question Mark</h1></a>  
-                </li> -->
+                {% if current_user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> Account </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                        aria-labelledby="navbarDropdownMenuLink-4">
+                        <a class="dropdown-item" href={{url_for('profile')}}>My Profile</a>
+                        <a class="dropdown-item" href={{url_for('questions')}}>My Questions</a>
+                        <a class="dropdown-item" href={{url_for('logout')}}>Log out</a>
+                    </div>
+                </li>
+                {% endif %}
                 <li class="nav-item active">
                     <a class="nav-link" href={{ url_for("explore") }} title="Take a tour of our website!">
                         <h5>Explore</h5>
@@ -102,7 +111,8 @@
         {% endfor %}
         {% endif %}
         {% endwith %}
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock content%}
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
