@@ -177,3 +177,13 @@
             display: block;
         }
         
+        #grad {
+            height: 633px;
+            background-color: white;
+            background-image: linear-gradient(to bottom right, #3bb2b8, #42e695);
+        }
+        body {
+            box-sizing: border-box;
+            font-family: sans-serif;
+            
+        }
