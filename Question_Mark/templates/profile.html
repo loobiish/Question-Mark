@@ -3,12 +3,9 @@
 <link rel="stylesheet" href={{ url_for('static', filename='style_profile.css') }}>
 {% endblock head %}
 {% block content %}
-    
-      
+<div id="grad">
+    <div class="container white-container">
 
-    <div id="grad">
-      <div class="container white-container">
-       
         <div class="profile-header">
             <div class="profile-img">
                 <img src="pic-3.png" width: 200; alt="">
@@ -21,7 +18,7 @@
 
                 <div class="address">
                     <p class="state">
-                        GZB, 
+                        GZB,
                     </p>
                     <span class="country">
                         India
@@ -36,7 +33,11 @@
                 <div class="profile-side">
                     <p class='user-mail'>unknown@gmial.com</p>
 
-                    <div class="userbio"><h3>About User</h3> <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, cumque a provident atque ratione obcaecati.</p></div>
+                    <div class="userbio">
+                        <h3>About User</h3>
+                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, cumque a provident atque
+                            ratione obcaecati.</p>
+                    </div>
 
 
                     <div class="post-area">
@@ -50,10 +51,8 @@
             <div class="right-side">
                 <div class="nav">
                     <div class="ul">
-                        <p onclick="tabs(0)"
-                        class="user-question">Questions</p>
-                        <p onclick="tabs(1)"
-                        class="user-answer">Answers</p>
+                        <p onclick="tabs(0)" class="user-question">Questions</p>
+                        <p onclick="tabs(1)" class="user-answer">Answers</p>
                     </div>
                     <!-- <ul>
                         <li onclick="tabs(0)"
@@ -66,33 +65,48 @@
                 <div class="profile-body">
                     <div class="profile-question tab">
                         <h1>Your Questions</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus, pariatur tempore illo, nulla consectetur eum maiores nostrum quisquam totam dolorum officiis amet qui labore minus itaque laudantium dolore blanditiis ipsum! Maiores aperiam at iusto modi perferendis libero corrupti placeat ipsa sit aut. Ipsam officia alias suscipit pariatur excepturi id quam. Maxime debitis quas facere magnam obcaecati alias accusantium animi?</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ratione corporis doloremque, temporibus vero vitae mollitia inventore dolorum iure vel omnis, placeat debitis perferendis cupiditate totam earum quam. Culpa sint praesentium et beatae, facilis assumenda commodi totam. Natus, nesciunt nostrum.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ratione corporis doloremque, temporibus vero vitae mollitia inventore dolorum iure vel nostrum.</p>
-                        
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus, pariatur tempore
+                            illo, nulla consectetur eum maiores nostrum quisquam totam dolorum officiis amet qui labore
+                            minus itaque laudantium dolore blanditiis ipsum! Maiores aperiam at iusto modi perferendis
+                            libero corrupti placeat ipsa sit aut. Ipsam officia alias suscipit pariatur excepturi id
+                            quam. Maxime debitis quas facere magnam obcaecati alias accusantium animi?</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ratione corporis doloremque,
+                            temporibus vero vitae mollitia inventore dolorum iure vel omnis, placeat debitis perferendis
+                            cupiditate totam earum quam. Culpa sint praesentium et beatae, facilis assumenda commodi
+                            totam. Natus, nesciunt nostrum.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ratione corporis doloremque,
+                            temporibus vero vitae mollitia inventore dolorum iure vel nostrum.</p>
+
                     </div>
                     <div class="profile-answer tab">
                         <h1>Your Answer</h1>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, labore, exercitationem voluptas obcaecati debitis cupiditate tempore adipisci facilis corrupti vitae assumenda ab sit deserunt tempora, ea harum recusandae vero optio quam reiciendis. Blanditiis odio inventore, praesentium in assumenda sequi aperiam non quod voluptatem sapiente tenetur doloribus hic voluptatibus pariatur excepturi voluptas eligendi voluptates illum eaque repellendus accusantium obcaecati. Exercitationem, ratione.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, labore, exercitationem voluptas
+                        obcaecati debitis cupiditate tempore adipisci facilis corrupti vitae assumenda ab sit deserunt
+                        tempora, ea harum recusandae vero optio quam reiciendis. Blanditiis odio inventore, praesentium
+                        in assumenda sequi aperiam non quod voluptatem sapiente tenetur doloribus hic voluptatibus
+                        pariatur excepturi voluptas eligendi voluptates illum eaque repellendus accusantium obcaecati.
+                        Exercitationem, ratione.
                     </div>
                 </div>
             </div>
 
         </div>
 
-       </div>     
-    </div>     
+    </div>
+</div>
 
-    <!-- Optional JavaScript -->
-    <script>
-        const tabBtn = document.querySelectorAll('.nav .ul p');
-        const tab = document.querySelectorAll('.tab');
-        function tabs(panelIndex) {
-            tab.forEach(function(node) {
-                node.style.display = 'none';
-            });
-            tab[panelIndex].style.display='block';
-        }
-        tabs(0);
-        <script src={{ url_for('static', filename='script.js') }}></script>
+<!-- Optional JavaScript -->
+<script>
+    const tabBtn = document.querySelectorAll('.nav .ul p');
+    const tab = document.querySelectorAll('.tab');
+    function tabs(panelIndex) {
+        tab.forEach(function (node) {
+            node.style.display = 'none';
+        });
+        tab[panelIndex].style.display = 'block';
+    }
+    tabs(0);
+</script>
+<script src={{ url_for('static', filename = 'script.js') }}></script>
+
 {% endblock content %}
