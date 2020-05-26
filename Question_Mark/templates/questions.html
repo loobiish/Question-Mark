@@ -1,4 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>Questions asked by the user who is currently login.</h1>
+{% for ques in questions.items %}
+<article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='default.jpg') }}">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{{ url_for('user_posts', username=quest.username) }}">{{ quest.username }}</a>
+            <small class="text-muted">{{ quest.date_posted.strftime('%Y-%m-%d') }}</small>
+        </div>
+        <p class="article-content">{{ quest.question }}</p>
+    </div>
+</article>
+{% endfor %}
 {% endblock content %}

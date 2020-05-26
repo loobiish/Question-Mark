@@ -79,18 +79,33 @@ def faq():
 @app.route("/profile", methods=['GET','POST'])
 @login_required
 def profile():
+        if request.method == 'POST':
+            _question = request.form.get("question")
+            user = Questions(question=_question, user_id=current_user.id )
+            db.session.add(user)
+            db.session.commit()
+            flash('Your Question has been posted successfully.', 'success')
+            return redirect(url_for('questions'))
         return render_template('profile.html', title='Profile')
 
 
 @app.route("/questions", methods=['GET','POST'])
 @login_required
 def questions():
-        return render_template('questions.html', title='My Questions')
+        
+        return render_template('questions.html', title='My Questions', questions=questions)
     
     
 @app.route("/forgot_password", methods=['GET','POST'])
 def forgot_password():
         return render_template('forgot_password.html', title='Forgot Password')
+
+
+@app.route("/user_post")
+def user_post(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    questions = Questions.query.filter_by(username=user)
+    return render_template('user_posts.html', questions=questions, user=user)
 
 
 
