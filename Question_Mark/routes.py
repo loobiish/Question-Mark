@@ -66,9 +66,10 @@ def about():
     return render_template('about.html', title='About')
 
 
-@app.route("/explore")
+@app.route("/explore", methods=['GET','POST'])
 def explore():
-    return render_template('explore.html', title='Explore')
+    values = Questions.query.all()
+    return render_template('explore.html', title='Explore', values=values) 
 
 
 @app.route("/faq")
@@ -81,7 +82,7 @@ def faq():
 def profile():
         if request.method == 'POST':
             _question = request.form.get("question")
-            user = Questions(question=_question, user_id=current_user.id )
+            user = Questions( question=_question, user_id=current_user.id )
             db.session.add(user)
             db.session.commit()
             flash('Your Question has been posted successfully.', 'success')
@@ -92,8 +93,10 @@ def profile():
 @app.route("/questions", methods=['GET','POST'])
 @login_required
 def questions():
-        
-        return render_template('questions.html', title='My Questions', questions=questions)
+        user = User.query.filter_by(username=current_user.username).first_or_404()
+        quest = Questions.query.filter_by(author=user)\
+                .order_by(Questions.date_posted.desc())
+        return render_template('questions.html', title='My Questions', user=user, quest=quest)
     
     
 @app.route("/forgot_password", methods=['GET','POST'])
@@ -101,11 +104,6 @@ def forgot_password():
         return render_template('forgot_password.html', title='Forgot Password')
 
 
-@app.route("/user_post")
-def user_post(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    questions = Questions.query.filter_by(username=user)
-    return render_template('user_posts.html', questions=questions, user=user)
 
 
 

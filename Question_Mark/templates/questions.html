@@ -1,14 +1,18 @@
 {% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" href={{ url_for('static', filename='style_questions.css') }}>
+{% endblock head %}
 {% block content %}
-{% for ques in questions.items %}
+<h1 class="mb-3">Questions by {{ user.username }} ({{ quest.total }})</h1>
+{% for item in quest %}
 <article class="media content-section">
     <img class="rounded-circle article-img" src="{{ url_for('static', filename='default.jpg') }}">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="{{ url_for('user_posts', username=quest.username) }}">{{ quest.username }}</a>
-            <small class="text-muted">{{ quest.date_posted.strftime('%Y-%m-%d') }}</small>
+            <a class="mr-2" href="#">{{ item.author.username }}</a>
+            <small class="text-muted">{{ item.date_posted.strftime('%Y-%m-%d') }}</small>
         </div>
-        <p class="article-content">{{ quest.question }}</p>
+        <p class="article-content">{{ item.question }}</p>
     </div>
 </article>
 {% endfor %}

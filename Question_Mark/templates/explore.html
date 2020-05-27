@@ -1,4 +1,18 @@
 {% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" href={{ url_for('static', filename='style_questions.css') }}>
+{% endblock head %}
 {% block content %}
-<h1>Explore</h1>
+{% for item in values %}
+<article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='default.jpg') }}">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ item.author.username }}</a>
+            <small class="text-muted">{{ item.date_posted.strftime('%Y-%m-%d') }}</small>
+        </div>
+        <p class="article-content">{{ item.question }}</p>
+    </div>
+</article>
+{% endfor %}
 {% endblock content %}
