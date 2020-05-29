@@ -3,7 +3,6 @@
 <link rel="stylesheet" href={{ url_for('static', filename='style_profile.css') }}>
 {% endblock head %}
 {% block content %}
-<!-- <div id="grad"> -->
     <div class="container white-container">
         <div class="profile-header">
             <div class="profile-img">
@@ -28,8 +27,7 @@
                     <p class='user-mail'>{{ current_user.email }}</p>
                     <div class="userbio">
                         <h3>About User</h3>
-                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, cumque a provident atque
-                            ratione obcaecati.</p>
+                        <p> Some random information about the user like information.</p>
                     </div>
                     <div class="post-area">
                         <form method="POST" action="{{ url_for('profile') }}" class="input-group">
@@ -83,9 +81,10 @@
             </div>
         </div>
     </div>
-<!-- </div> -->
 
 <!-- Optional JavaScript -->
+
+<script src={{ url_for('static', filename = 'script.js') }}></script>
 <script>
     const tabBtn = document.querySelectorAll('.nav .ul p');
     const tab = document.querySelectorAll('.tab');
@@ -97,5 +96,4 @@
     }
     tabs(0);
 </script>
-<script src={{ url_for('static', filename = 'script.js') }}></script>
 {% endblock content %}
