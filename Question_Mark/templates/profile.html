@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block head %}
 <link rel="stylesheet" href={{ url_for('static', filename='style_profile.css') }}>
+<link rel="stylesheet" href={{ url_for('static', filename='style_questions.css') }}>
 {% endblock head %}
 {% block content %}
     <div class="container white-container">
@@ -55,17 +56,18 @@
                 <div class="profile-body">
                     <div class="profile-question tab">
                         <h1>Your Questions</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus, pariatur tempore
-                            illo, nulla consectetur eum maiores nostrum quisquam totam dolorum officiis amet qui labore
-                            minus itaque laudantium dolore blanditiis ipsum! Maiores aperiam at iusto modi perferendis
-                            libero corrupti placeat ipsa sit aut. Ipsam officia alias suscipit pariatur excepturi id
-                            quam. Maxime debitis quas facere magnam obcaecati alias accusantium animi?</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ratione corporis doloremque,
-                            temporibus vero vitae mollitia inventore dolorum iure vel omnis, placeat debitis perferendis
-                            cupiditate totam earum quam. Culpa sint praesentium et beatae, facilis assumenda commodi
-                            totam. Natus, nesciunt nostrum.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ratione corporis doloremque,
-                            temporibus vero vitae mollitia inventore dolorum iure vel nostrum.</p>
+                        {% for item in quest %}
+                        <article class="media content-section">
+                            <img class="rounded-circle article-img" src="{{ url_for('static', filename='default.jpg') }}">
+                            <div class="media-body">
+                                <div class="article-metadata">
+                                    <a class="mr-2" href="#">{{ item.author.username }}</a>
+                                    <small class="text-muted">{{ item.date_posted.strftime('%Y-%m-%d') }}</small>
+                                </div>
+                                <p class="article-content">{{ item.question }}</p>
+                            </div>
+                        </article>
+                        {% endfor %}
                     </div>
 
                     <div class="profile-answer tab">
