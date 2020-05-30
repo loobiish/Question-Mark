@@ -80,22 +80,22 @@ def faq():
 @app.route("/profile", methods=['GET','POST'])
 @login_required
 def profile():
-        user = User.query.filter_by(username=current_user.username).first_or_404()
-        quest = Questions.query.filter_by(author=user)\
-                .order_by(Questions.date_posted.desc())
-        if request.method == 'POST':
-            _question = request.form.get("question")
-            user = Questions( question=_question, user_id=current_user.id )
-            db.session.add(user)
-            db.session.commit()
-            flash('Your Question has been posted successfully.', 'success')
-            return redirect(url_for('profile'))
-        return render_template('profile.html', title='Profile', user=user, quest=quest)
+    user = User.query.filter_by(username=current_user.username).first_or_404()
+    quest = Questions.query.filter_by(author=user)\
+            .order_by(Questions.date_posted.desc())
+    if request.method == 'POST':
+        _question = request.form.get("question")
+        user = Questions( question=_question, user_id=current_user.id )
+        db.session.add(user)
+        db.session.commit()
+        flash('Your Question has been posted successfully.', 'success')
+        return redirect(url_for('profile'))
+    return render_template('profile.html', title='Profile', user=user, quest=quest)
     
     
 @app.route("/forgot_password", methods=['GET','POST'])
 def forgot_password():
-        return render_template('forgot_password.html', title='Forgot Password')
+    return render_template('forgot_password.html', title='Forgot Password')
 
 
 
