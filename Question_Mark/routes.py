@@ -40,7 +40,7 @@ def LoginForm():
         if _user and bcrypt.check_password_hash(_user.password, _password):
             login_user(_user, remember=_remember)
             flash('Login Successful', 'success')
-            return redirect(url_for('questions'))
+            return redirect(url_for('profile'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
             return render_template('home.html', title='Home')
