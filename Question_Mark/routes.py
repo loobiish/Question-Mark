@@ -34,7 +34,7 @@ def LoginForm():
         return redirect(url_for('explore'))
     if request.method == 'POST':
         _email = request.form.get("l_email")
-        _password = request.form.get("l_pass" )
+        _password = request.form.get("l_pass")
         _remember = request.form.getlist('checkbox')
         _user = User.query.filter_by(email=_email).first()
         if _user and bcrypt.check_password_hash(_user.password, _password):
@@ -91,6 +91,16 @@ def profile():
         flash('Your Question has been posted successfully.', 'success')
         return redirect(url_for('profile'))
     return render_template('profile.html', title='Profile', user=user, quest=quest)
+
+
+@app.route('/delete_ques/<string:id>', methods=['POST'])
+def delete_ques(id):
+    delete = Questions.query.filter_by(id=id).first()
+    db.session.delete(delete)
+    db.session.commit()
+    flash("Question Deleted","success")
+    return redirect(url_for('profile'))
+
     
     
 @app.route("/forgot_password", methods=['GET','POST'])

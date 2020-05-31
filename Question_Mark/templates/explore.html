@@ -4,12 +4,18 @@
 {% endblock head %}
 {% block content %}
 {% for item in values %}
-<article class="media content-section">
+<article class="media content-section-ex">
     <img class="rounded-circle article-img" src="{{ url_for('static', filename='default.jpg') }}">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ item.author.username }}</a>
-            <small class="text-muted">{{ item.date_posted.strftime('%Y-%m-%d') }}</small>
+            <table class="table table-striped">
+            <tr>
+            <td><a class="mr-2" href="#">{{ item.author.username }}</a></td>
+            <td><small class="text-muted">{{ item.date_posted.strftime('%Y-%m-%d') }}</small></td>
+            <td><form action="{{url_for('delete_ques', id=item.id)}}" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger"> 
+            </form></td></tr></table>
         </div>
         <p class="article-content">{{ item.question }}</p>
     </div>

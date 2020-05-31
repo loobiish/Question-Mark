@@ -7,6 +7,17 @@
     width: 745px;
 
   }
+/* .delete_button {
+
+} */
+.content-section-ex {
+  background: #ffffff !important;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+
+  }
 
 .article-content {
     white-space: pre-line;
