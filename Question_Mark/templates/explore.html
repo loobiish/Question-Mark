@@ -1,6 +1,8 @@
-{% extends "layout.html" %} {% block head %} <link rel="stylesheet" href={{
-url_for('static', filename='style_questions.css') }}> {% endblock head %} {%
-block content %} {% for item in values %}
+{% extends "layout.html" %} 
+{% block head %} <link rel="stylesheet" href={{url_for('static', filename='style_questions.css') }}> 
+{% endblock head %} 
+{%block content %} 
+{% for item in values %}
 <article class="media content-section-ex">
   <img
     class="rounded-circle article-img"
