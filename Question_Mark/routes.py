@@ -2,6 +2,7 @@ from Question_Mark import app, db, bcrypt
 from flask import render_template, redirect, url_for, flash, request, session
 from Question_Mark.models import User, Questions
 from flask_login import login_user, current_user, logout_user, login_required
+from random_username.generate import generate_username
 
 @app.route("/register", methods=['GET','POST'])
 def RegistrationForm():
@@ -10,13 +11,15 @@ def RegistrationForm():
     if request.method == 'POST':
         first_name_ = request.form.get("f_name")
         last_name_ = request.form.get("l_name")
+        a = generate_username(1)
+        username_ = a[0]
         email_ = request.form.get("r_email")
         password_ = request.form.get("r_pass")
         confirm_password_ = request.form.get("c_pass")
         conditions = request.form.getlist('tc')
         hashed_password = bcrypt.generate_password_hash(password_).decode('utf-8')
         if password_ == confirm_password_:
-            user = User(first_name=first_name_, last_name=last_name_, email=email_, password=hashed_password)
+            user = User(first_name=first_name_, last_name=last_name_, username=username_, email=email_, password=hashed_password)
             db.session.add(user)
             db.session.commit()
             flash('Your account has been created! You will now be able to log in!', 'success')
