@@ -1,13 +1,8 @@
-{% extends "layout.html" %} {% block head %} <link rel="stylesheet" href={{
-url_for('static', filename='style_questions.css') }}> {% endblock head %}
-{%block content %} {% for item in values %}
-=======
 {% extends "layout.html" %} 
 {% block head %} <link rel="stylesheet" href={{url_for('static', filename='style_questions.css') }}> 
 {% endblock head %} 
 {%block content %} 
 {% for item in values %}
->>>>>>> d8e7108f0958096a85d0c0e2d06276ec694f196a
 <article class="media content-section-ex">
   <img
     class="rounded-circle article-img"
@@ -20,7 +15,7 @@ url_for('static', filename='style_questions.css') }}> {% endblock head %}
           <td>
             <a
               class="mr-2"
-              href="{{ url_for('user_posts', username=item.author.username) }}"
+              href="user_posts/{{ item.author.username }}"
               >{{ item.author.username }}</a
             >
           </td>

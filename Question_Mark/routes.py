@@ -105,12 +105,12 @@ def delete_ques(id):
     return redirect(url_for('profile'))
 
 
-app.route("/user_posts/<username>")
+@app.route("/user_posts/<string:username>")
 def user_posts(username):
     user = User.query.filter_by(username=username).first_or_404()
     quest = Questions.query.filter_by(author=user)\
             .order_by(Questions.date_posted.desc())
-    return render_template('usern.html', user=user, quest=quest)
+    return render_template('user_posts.html', title='Profile: '+ username,user=user, quest=quest)
     
 
     
