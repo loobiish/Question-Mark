@@ -105,7 +105,7 @@ def delete_ques(id):
     return redirect(url_for('profile'))
 
 
-@app.route("/user_posts/<string:username>")
+@app.route("/user_posts/<string:username>", methods=['POST'])
 def user_posts(username):
     user = User.query.filter_by(username=username).first_or_404()
     quest = Questions.query.filter_by(author=user)\
