@@ -71,7 +71,7 @@ def about():
 
 @app.route("/explore", methods=['GET','POST'])
 def explore():
-    values = Questions.query.all()
+    values = Questions.query.order_by(Questions.date_posted.desc())
     return render_template('explore.html', title='Explore', values=values) 
 
 
