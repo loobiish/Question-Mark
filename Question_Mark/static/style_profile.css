@@ -14,7 +14,7 @@
 }
 
 #grad {
-  height: 98%;
+  height: 1000px;
   background-color: white;
   background-image: linear-gradient(to bottom right, #3bb2b8, #42e695);
 }
