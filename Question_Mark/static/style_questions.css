@@ -41,8 +41,8 @@
   }
 
   #grad {
-    height: 800px;
+    /* height: 1000px; */
     background-color: #ffffff;
     background-image: linear-gradient(to bottom right, #3bb2b8, #42e695);
-    /* background-attachment: fixed !important; */
+    background-attachment: fixed !important;
 }
