@@ -12,10 +12,16 @@
 
     {% block head %}{% endblock head %}
     <style>
-        .navbar-dark .navbar-nav .nav-item .nav-link:focus,
-        .navbar-dark .navbar-nav .nav-item .nav-link:hover {
-            color: #3bb2b8;
+        .navbar-dark .navbar-nav .nav-item .nav-link .newdropdown:focus,
+        .navbar-dark .navbar-nav .nav-item .nav-link .newdropdown:hover {
+            color: #3bb2b8 !important;
             text-shadow: 1px 1px 2px black, 0 0 25px #42e695;
+        }
+        
+        #newdropdown {
+            font-family: sans-serif;
+            /* color: #ffffff; */
+            font-size: 20px;
         }
 
         .navbar-brand:focus,
@@ -73,12 +79,12 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="newdropdown" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false" aria-expanded="false">Account </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info"
                         aria-labelledby="navbarDropdownMenuLink-4">
                         <a class="dropdown-item" href={{url_for('profile')}}>My Profile</a>
-                        <a class="dropdown-item" href={{url_for('logout')}}>Log out</a>
+                        <a class="dropdown-item" href={{url_for('logout')}}>Log Out</a>
                     </div>
                 </li>
                 {% endif %}
