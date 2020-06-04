@@ -28,6 +28,13 @@
       </table>
     </div>
     <p class="article-content">{{ item.question }}</p>
+    <div class="post-area">
+      <form method="POST" action="{{ url_for('explore') }}" class="input-group">
+          <textarea name="answer" id="" cols="150" rows="1"></textarea>
+          <button class="post-button">Reply</button>
+      </form>
+    </div>
   </div>
 </article>
+
 {% endfor %} {% endblock content %}
