@@ -41,6 +41,17 @@ class Questions(db.Model):
     question = db.Column(db.Text, nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    answers = db.relationship('Answers', backref='writer', lazy=True)
 
     def __repr__(self):
         return f"Questions('{self.question}', '{self.date_posted}')"
+
+
+class Answers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    answer = db.Column(db.Text, nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    quest_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Answers('{self.answer}', '{self.date_posted}')"
