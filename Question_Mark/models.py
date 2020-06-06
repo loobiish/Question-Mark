@@ -2,6 +2,7 @@ from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from Question_Mark import db, app, login_manager
 from flask_login import UserMixin
+import flask_whooshalchemyplus as wa
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -37,6 +38,7 @@ class User(db.Model, UserMixin):
 
 
 class Questions(db.Model):
+    __searchable__=['question']
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.Text, nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -55,3 +57,5 @@ class Answers(db.Model):
 
     def __repr__(self):
         return f"Answers('{self.answer}', '{self.date_posted}')"
+
+wa.whoosh_index(app, Questions)

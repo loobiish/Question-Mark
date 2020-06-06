@@ -68,7 +68,6 @@ def logout():
 def about():
     return render_template('about.html', title='About')
 
-
 @app.route("/explore", methods=['GET','POST'])
 def explore():
     values = Questions.query.order_by(Questions.date_posted.desc())
@@ -129,9 +128,8 @@ def forgot_password():
 
 @app.route("/search")
 def search():
-    posts=Questions.query.woosh_search(request.args.get("query")).all()
-    return render_template('explore.html', title='Search Result', posts=posts)
-
+    posts = Questions.query.whoosh_search(request.args.get('query')).all()
+    return render_template('explore.html',posts=posts)
 
 
 
