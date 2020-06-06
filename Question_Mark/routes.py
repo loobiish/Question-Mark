@@ -1,6 +1,6 @@
 from Question_Mark import app, db, bcrypt
 from flask import render_template, redirect, url_for, flash, request, session
-from Question_Mark.models import User, Questions
+from Question_Mark.models import User, Questions, Answers
 from flask_login import login_user, current_user, logout_user, login_required
 from random_username.generate import generate_username
 
@@ -72,6 +72,13 @@ def about():
 @app.route("/explore", methods=['GET','POST'])
 def explore():
     values = Questions.query.order_by(Questions.date_posted.desc())
+    if request.method == 'POST':
+        _answer = request.form.get("answer")
+        user = Answers( answer=_answer, quest_id=current_user.id )
+        db.session.add(user)
+        db.session.commit()
+        flash('Your Answer has been posted successfully.', 'success')
+        return redirect(url_for('explore'))
     return render_template('explore.html', title='Explore', values=values) 
 
 
