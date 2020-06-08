@@ -129,7 +129,7 @@ def forgot_password():
 @app.route("/search")
 def search():
     posts = Questions.query.whoosh_search(request.args.get('query')).all()
-    return render_template('explore.html',posts=posts)
+    return render_template('explore.html', posts=posts, title='Search Results')
 
 
 
