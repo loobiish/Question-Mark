@@ -71,14 +71,19 @@ def about():
 @app.route("/explore", methods=['GET','POST'])
 def explore():
     values = Questions.query.order_by(Questions.date_posted.desc())
+    return render_template('explore.html', title='Explore', values=values) 
+
+@app.route("/reply/<int:question_id>", methods=['GET','POST'])
+def reply(question_id):
+    question = Questions.query.get_or_404(question_id)
     if request.method == 'POST':
         _answer = request.form.get("answer")
-        user = Answers( answer=_answer, quest_id=current_user.id )
+        user = Answers( answer=_answer, quest_id=question_id )
         db.session.add(user)
         db.session.commit()
         flash('Your Answer has been posted successfully.', 'success')
         return redirect(url_for('explore'))
-    return render_template('explore.html', title='Explore', values=values) 
+    return render_template('reply.html', title='Reply', question=question)
 
 
 @app.route("/faq")
@@ -130,6 +135,20 @@ def forgot_password():
 def search():
     posts = Questions.query.whoosh_search(request.args.get('query')).all()
     return render_template('explore.html', posts=posts, title='Search Results')
+
+
+@app.route("/answers/<int:question_id>")
+def answers(question_id):
+    questions = Questions.query.get_or_404(question_id)
+    answers = Answers.query.filter_by(quest_id=question_id)
+    return render_template('answers.html', title='Answers', questions=questions, answers=answers)
+
+@app.route("/users")
+def users():
+    users = User.query.all()
+    questions = Questions.query.all()
+    answers = Answers.query.all()
+    return render_template('users.html', title='Users', users=users, questions=questions, answers=answers)
 
 
 

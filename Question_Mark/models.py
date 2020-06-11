@@ -56,6 +56,6 @@ class Answers(db.Model):
     quest_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
 
     def __repr__(self):
-        return f"Answers('{self.answer}', '{self.date_posted}')"
+        return f"Answers('{self.answer}', '{self.date_posted}', '{self.quest_id}')"
 
 wa.whoosh_index(app, Questions)
