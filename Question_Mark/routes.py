@@ -122,7 +122,7 @@ def user_posts(username):
     quest = Questions.query.filter_by(author=user)\
             .order_by(Questions.date_posted.desc())
     return render_template('user_posts.html', title='Profile: '+ username, x=username, user=user, quest=quest)
-    
+
 
     
     
