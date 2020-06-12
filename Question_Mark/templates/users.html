@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block head %}
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+{% endblock head %}
+{%block content %}
+<div class="page-header">
+    <h1>Users</h1>
+    {% for user in users %}
+    <table style="width:100%">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Questions</th>
+        </tr>
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.questions }}</td>
+        </tr>
+    </table>
+    {% endfor %}
+</div>
+<div class="page-header">
+    <h1>Questions</h1>
+    {% for question in questions %}
+    <table style="width:100%">
+        <tr>
+            <th>ID</th>
+            <th>Question</th>
+            <th>Date Posted</th>
+            <th>User ID</th>
+            <th>Answers</th>
+        </tr>
+        <tr>
+            <td>{{ question.id }}</td>
+            <td>{{ question.question }}</td>
+            <td>{{ question.date_posted }}</td>
+            <td>{{ question.user_id }}</td>
+            <td>{{ question.answers }}</td>
+        </tr>
+    </table>
+    {% endfor %}
+</div>
+<div class="page-header">
+    <h1>Answers</h1>
+    {% for answer in answers %}
+    <table style="width:100%">
+        <tr>
+            <th>ID</th>
+            <th>Answer</th>
+            <th>Date Posted</th>
+            <th>Question ID</th>
+        </tr>
+        <tr>
+            <td>{{ answer.id }}</td>
+            <td>{{ answer.answer }}</td>
+            <td>{{ answer.date_posted }}</td>
+            <td>{{ answer.quest_id }}</td>
+        </tr>
+    </table>
+    {% endfor %}
+</div>
+{% endblock content %}

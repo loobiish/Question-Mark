@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" href={{url_for('static', filename='style_questions.css') }}>
+{% endblock head %}
+{%block content %}
+<article class="media content-section-ex">
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='default.jpg') }}" />
+    <div class="media-body">
+        <div class="article-metadata">
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        <a class="mr-2"
+                            href="user_posts/{{ questions.author.username }}">{{ questions.author.username }}</a>
+                    </td>
+                    <td>
+                        <small class="text-muted">{{ questions.date_posted.strftime('%Y-%m-%d') }}</small>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <h2>{{ questions.question }}</h2>
+        {% for ans in answers %}
+        <p class="article-content">{{ ans.answer }}</p>
+        <p class="article-content">Answered By:
+            <a class="mr-2" href="user_posts/{{ ans.writer.user_id }}">{{ ans.writer.user_id }}</a>
+        </p>
+        {% endfor %}
+    </div>
+</article>
+{% endblock content %}
