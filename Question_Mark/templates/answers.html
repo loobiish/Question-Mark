@@ -11,7 +11,7 @@
                 <tr>
                     <td>
                         <a class="mr-2"
-                            href="/user_posts/{{ questions.author.username }}">{{ questions.author.username }}</a>
+                            href="user_posts/{{ questions.author.username }}">{{ questions.author.username }}</a>
                     </td>
                     <td>
                         <small class="text-muted">{{ questions.date_posted.strftime('%Y-%m-%d') }}</small>
@@ -22,7 +22,8 @@
         <h2>{{ questions.question }}</h2>
         {% for ans in answers %}
         <p class="article-content">{{ ans.answer }}</p>
-        <p class="article-content">Answered By: <a class="mr-2" href="/user_posts/{{ ans.writer.user_id }}">{{ ans.writer.user_id }}</a>
+        <p class="article-content">Answered By:
+            <a class="mr-2" href="user_posts/{{ ans.writer.user_id }}">{{ ans.writer.user_id }}</a>
         </p>
         {% endfor %}
     </div>
