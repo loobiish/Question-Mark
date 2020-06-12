@@ -3,6 +3,9 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from Question_Mark import db, app, login_manager
 from flask_login import UserMixin
 import flask_whooshalchemyplus as wa
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -18,7 +21,6 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     questions = db.relationship('Questions', backref='author', lazy=True)
-    # answers = db.relationship('Answers', backref='author', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(app.config['SECRET_KEY'], expires_sec)
@@ -55,7 +57,6 @@ class Answers(db.Model):
     answer = db.Column(db.Text, nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     quest_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
-    # ans_username = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
         return f"Answers('{self.answer}', '{self.date_posted}', '{self.quest_id}')"
