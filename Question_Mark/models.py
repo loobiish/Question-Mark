@@ -52,10 +52,11 @@ class Questions(db.Model):
 class Answers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     answer = db.Column(db.Text, nullable=False)
+    username = db.Column(db.String(30), nullable=False) ## Username of the user who answered the question
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     quest_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
 
     def __repr__(self):
-        return f"Answers('{self.answer}', '{self.date_posted}', '{self.quest_id}')"
+        return f"Answers('{self.answer}', '{self.username}', '{self.date_posted}', '{self.quest_id}')"
 
 wa.whoosh_index(app, Questions)

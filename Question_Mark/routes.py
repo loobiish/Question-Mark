@@ -74,11 +74,12 @@ def explore():
     return render_template('explore.html', title='Explore', values=values) 
 
 @app.route("/reply/<int:question_id>", methods=['GET','POST'])
+@login_required
 def reply(question_id):
     question = Questions.query.get_or_404(question_id)
     if request.method == 'POST':
         _answer = request.form.get("answer")
-        user = Answers( answer=_answer, quest_id=question_id )
+        user = Answers( answer=_answer, username=current_user.username, quest_id=question_id )
         db.session.add(user)
         db.session.commit()
         flash('Your Answer has been posted successfully.', 'success')
@@ -138,6 +139,7 @@ def search():
 
 
 @app.route("/answers/<int:question_id>")
+@login_required
 def answers(question_id):
     questions = Questions.query.get_or_404(question_id)
     answers = Answers.query.filter_by(quest_id=question_id)
