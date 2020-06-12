@@ -97,7 +97,7 @@ def reply(question_id):
         db.session.commit()
         flash("Your Answer has been posted successfully.", "success")
         return redirect(url_for("explore"))
-    return render_template("explore.html", title="Explore", values=values)
+    return render_template("reply.html", title="Explore", question=question)
 
 
 @app.route("/faq")
