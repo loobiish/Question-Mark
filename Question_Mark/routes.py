@@ -119,7 +119,7 @@ def profile():
         db.session.commit()
         flash("Your Question has been posted successfully.", "success")
         return redirect(url_for("profile"))
-    return render_template("profile.html", title="Profile", user=user, quest=quest)
+    return render_template("profile.html", title="Profile", user=user, quest=quest, answ=answ)
 
 
 @app.route("/delete_ques/<int:id>", methods=["POST"])

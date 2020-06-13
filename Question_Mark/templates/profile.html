@@ -44,7 +44,6 @@
             <div class="nav">
                 <div class="ul">
                     <p onclick="tabs(0)" class="user-question">Questions</p>
-                    <p onclick="tabs(1)" class="user-answer">Answers</p>
                 </div>
             </div>
 
@@ -79,12 +78,31 @@
                 </div>
                 <div class="profile-answer tab">
                     <h1>Your Answers</h1>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, labore, exercitationem voluptas
-                    obcaecati debitis cupiditate tempore adipisci facilis corrupti vitae assumenda ab sit deserunt
-                    tempora, ea harum recusandae vero optio quam reiciendis. Blanditiis odio inventore, praesentium
-                    in assumenda sequi aperiam non quod voluptatem sapiente tenetur doloribus hic voluptatibus
-                    pariatur excepturi voluptas eligendi voluptates illum eaque repellendus accusantium obcaecati.
-                    Exercitationem, ratione.
+                    {% for item in answ %}
+                    <article class="media content-section">
+                        <img class="rounded-circle article-img" src="{{ url_for('static', filename='default.jpg') }}">
+                        <div class="media-body">
+                            <div class="article-metadata">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td><a class="mr-2" href="#">{{ item.author.username }}</a></td>
+                                        <td><small
+                                                class="text-muted">{{ item.date_posted.strftime('%Y-%m-%d') }}</small>
+                                        </td>
+                                        <td>
+                                            <form action="{{url_for('delete_ques', id=item.id)}}" method="POST">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="submit" value="Delete" class="btn btn-danger">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <p class="article-content">{{ item.question }}</p>
+                            <a class="mr-2" href="{{ url_for('answers', question_id = item.id) }}">See Answers</a>
+                        </div>
+                    </article>
+                    {% endfor %}
                 </div>
             </div>
         </div>
