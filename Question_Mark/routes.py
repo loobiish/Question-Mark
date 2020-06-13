@@ -122,10 +122,14 @@ def profile():
     return render_template("profile.html", title="Profile", user=user, quest=quest)
 
 
-@app.route("/delete_ques/<string:id>", methods=["POST"])
+@app.route("/delete_ques/<int:id>", methods=["POST"])
 def delete_ques(id):
-    delete = Questions.query.filter_by(id=id).first()
-    db.session.delete(delete)
+    ans_delete = Answers.query.filter_by(quest_id=id).all()
+    for i in ans_delete:
+        db.session.delete(i)
+        db.session.commit()
+    ques_delete = Questions.query.filter_by(id=id).first()
+    db.session.delete(ques_delete)
     db.session.commit()
     flash("Question Deleted", "success")
     return redirect(url_for("profile"))
