@@ -58,7 +58,7 @@
 .white-container {
   background-color: ghostwhite;
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
 }
 .grad-element {
   background-image: linear-gradient(to bottom right, #3bb2b8, #42e695);

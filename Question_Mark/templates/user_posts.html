@@ -42,7 +42,6 @@
 
                 <div class="profile-body">
                     <div class="profile-question tab">
-                        <h1>Your Questions</h1>
                         {% for item in quest %}
                         <article class="media content-section">
                             <img class="rounded-circle article-img" src="{{ url_for('static', filename='default.jpg') }}">
@@ -56,13 +55,13 @@
                                     </table>
                                 </div>
                                 <p class="article-content">{{ item.question }}</p>
+                                <a class="mr-2" href="{{ url_for('answers', question_id = item.id) }}">See Answers</a>
                             </div>
                         </article>
                         {% endfor %}
                     </div>
 
                     <div class="profile-answer tab">
-                        <h1>Your Answer</h1>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, labore, exercitationem voluptas
                         obcaecati debitis cupiditate tempore adipisci facilis corrupti vitae assumenda ab sit deserunt
                         tempora, ea harum recusandae vero optio quam reiciendis. Blanditiis odio inventore, praesentium
