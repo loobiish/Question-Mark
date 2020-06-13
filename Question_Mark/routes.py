@@ -124,7 +124,9 @@ def profile():
 
 @app.route("/delete_ques/<string:id>", methods=["POST"])
 def delete_ques(id):
+    # delans = Answers.query.filter_by(quest_id=id).first()
     delete = Questions.query.filter_by(id=id).first()
+    # db.session.delete(delans) 
     db.session.delete(delete)
     db.session.commit()
     flash("Question Deleted", "success")
