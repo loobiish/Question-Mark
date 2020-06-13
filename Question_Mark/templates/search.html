@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" href={{url_for('static', filename='style_questions.css') }}>
+{% endblock head %}
+{% block content %}
+{% for item in questions %}
+<article class="media content-section-ex">
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='default.jpg') }}" />
+    <div class="media-body">
+        <div class="article-metadata">
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        <a class="mr-2" href="user_posts/{{ item.author.username }}">{{ item.author.username }}</a>
+                    </td>
+                    <td>
+                        <small class="text-muted">{{ item.date_posted.strftime('%Y-%m-%d') }}</small>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p class="article-content">{{ item.question }}</p>
+        {% if current_user.is_authenticated %}
+        <a class="mr-2" href="{{ url_for('reply', question_id = item.id) }}">Reply</a>
+        {% endif %}
+        <a class="mr-2" href="{{ url_for('answers', question_id = item.id) }}">See Answers</a>
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}

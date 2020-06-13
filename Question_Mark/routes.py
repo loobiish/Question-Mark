@@ -97,7 +97,7 @@ def reply(question_id):
         db.session.commit()
         flash("Your Answer has been posted successfully.", "success")
         return redirect(url_for("explore"))
-    return render_template("reply.html", title="Explore", question=question)
+    return render_template("reply.html", title="Reply", question=question)
 
 
 @app.route("/faq")
@@ -122,12 +122,15 @@ def profile():
     return render_template("profile.html", title="Profile", user=user, quest=quest)
 
 
-@app.route("/delete_ques/<string:id>", methods=["POST"])
+@app.route("/delete_ques/<int:id>", methods=["POST"])
 def delete_ques(id):
-    # delans = Answers.query.filter_by(quest_id=id).first()
-    delete = Questions.query.filter_by(id=id).first()
-    # db.session.delete(delans) 
-    db.session.delete(delete)
+
+    ans_delete = Answers.query.filter_by(quest_id=id).all()
+    for i in ans_delete:
+        db.session.delete(i)
+        db.session.commit()
+    ques_delete = Questions.query.filter_by(id=id).first()
+    db.session.delete(ques_delete)
     db.session.commit()
     flash("Question Deleted", "success")
     return redirect(url_for("profile"))
@@ -153,10 +156,33 @@ def forgot_password():
     return render_template("forgot_password.html", title="Forgot Password")
 
 
-@app.route("/search")
+# questions = Questions.query.all()
+#     list1 = []
+#     list2 = []
+#     list3 = []
+#     if request.method == "POST":
+#         keyword = request.form.get("search")
+#         for ques in questions:
+#             list1.append(ques.question)
+#         for sentence in list1:
+#             if keyword in sentence:
+#                 list2.append(sentence)
+#         for searchable in list2:
+#             item = Questions.query.filter_by(question=searchable)
+#             list3.append(item)
+#         print(list3)
+
+#   employees = Employees.query.filter(Employees.fullname.in_(['rai', 'kenshin', 'Ednalan']))
+
+
+@app.route("/search", methods=["GET", "POST"])
 def search():
-    posts = Questions.query.whoosh_search(request.args.get("query")).all()
-    return render_template("explore.html", posts=posts, title="Search Results")
+    if request.method == "POST":
+        keyword = request.form.get("search")
+        print(keyword)
+        search = "%{}%".format(keyword)
+        questions = Questions.query.filter(Questions.question.like(search))
+    return render_template("search.html", questions=questions, title="Search Results")
 
 
 @app.route("/answers/<int:question_id>")

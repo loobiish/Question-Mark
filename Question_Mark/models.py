@@ -2,7 +2,6 @@ from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from Question_Mark import db, app, login_manager
 from flask_login import UserMixin
-import flask_whooshalchemyplus as wa
 
 
 @login_manager.user_loader
@@ -60,6 +59,3 @@ class Answers(db.Model):
 
     def __repr__(self):
         return f"Answers('{self.answer}', '{self.username}', '{self.date_posted}', '{self.quest_id}')"
-
-
-wa.whoosh_index(app, Questions)
