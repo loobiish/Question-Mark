@@ -57,7 +57,7 @@ dask==2.6.0
 decorator==4.4.0
 defusedxml==0.6.0
 distlib==0.3.0
-distributed==2.1.0
+distributed==2021.10.0
 docutils==0.14
 docx==0.2.4
 easygui==0.98.1
