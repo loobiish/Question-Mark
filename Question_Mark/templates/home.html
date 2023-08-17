@@ -23,7 +23,7 @@
             <div class="button-box">
                 <div id="btn"></div>
                 <button type="button" class="toggle-btn btn shadow-none" onclick="login()"
-                    title="Alredy a user? Just Log In.">
+                    title="Already a user? Just Log In.">
                     Log In
                 </button>
                 <button type="button" class="toggle-btn btn shadow-none" onclick="register()"
@@ -50,11 +50,11 @@
 
 
             <form method="POST" action="{{ url_for('RegistrationForm') }}" id="register" class="input-group">
-                <input type="text" name="f_name" class="input-feild" placeholder="First Name" required>
-                <input type="text" name="l_name" class="input-feild inp" placeholder="Last Name" required>
-                <input type="email" name="r_email" class="input-feild inp" placeholder="Email Id" required>
-                <input type="password" name="r_pass" class="input-feild inp" placeholder="Enter Password" required>
-                <input type="password" name="c_pass" class="input-feild inp" placeholder="Confirm Password" required>
+                <input type="text" name="f_name" class="input-field" placeholder="First Name" required>
+                <input type="text" name="l_name" class="input-field inp" placeholder="Last Name" required>
+                <input type="email" name="r_email" class="input-field inp" placeholder="Email Id" required>
+                <input type="password" name="r_pass" class="input-field inp" placeholder="Enter Password" required>
+                <input type="password" name="c_pass" class="input-field inp" placeholder="Confirm Password" required>
                 <input type="checkbox" name="tc" value="True" class="check-box rCheckBox"><span class="r">
                     Agree to Terms and Conditions</span>
                 <button type="submit" value="register" class="submit-btn registerBtn"
