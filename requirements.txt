@@ -193,7 +193,7 @@ pycodestyle==2.5.0
 pycosat==0.6.3
 pycparser==2.19
 pycrypto==2.6.1
-pycryptodome==3.9.4
+pycryptodome==3.19.1
 pycurl==7.43.0.3
 pyexcel-io==0.5.20
 pyexcel-ods==0.5.6
