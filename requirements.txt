@@ -277,7 +277,7 @@ tqdm==4.32.1
 traitlets==4.3.2
 unicodecsv==0.14.1
 urllib3==1.26.5
-virtualenv==20.0.17
+virtualenv==20.26.6
 wasabi==0.4.0
 wcwidth==0.1.7
 webdriverdownloader==1.1.0.3
