@@ -228,7 +228,7 @@ qtconsole==4.5.1
 QtPy==1.8.0
 random-username==1.0.2
 regex==2020.4.4
-requests==2.31.0
+requests==2.32.4
 rope==0.14.0
 ruamel-yaml==0.15.46
 scikit-image==0.15.0
